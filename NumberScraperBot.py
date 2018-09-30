@@ -41,7 +41,7 @@ def menu(): #menu
         #gotta initialize values here, get the values from a txt
         with open('Numbers.txt') as f:
             nolinelist = [line.rstrip('\n') for line in f]
-        numberlist = "".join(nolinelist).split(":")
+        numberlist = "".join(nolinelist).split("|")
         if numberlist[0] == "":
             numberlist = []
         startthing = len(numberlist)#where to start
@@ -72,8 +72,13 @@ def menu(): #menu
                         print("====================================")
                         print(search_results[amountofiterations].link)
                         print("====================================")
+                        writeNumbers = open("Numbers.txt","w")
                         for h in range(0,len(listofnumbersfromj)):
                             print(listofnumbersfromj[h])
+                            if h == len(listofnumbersfromj) - 1:
+                                writeNumbers.write(listofnumbersfromj[h])
+                            else:
+                                writeNumbers.write(listofnumbersfromj[h] + "|")
                         amountofiterations += 1
                         #will append numbers to the list and then put in txt file
             if number == 2:
